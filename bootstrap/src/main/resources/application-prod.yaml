@@ -1,0 +1,44 @@
+# =============================================
+# 生产环境配置 (Docker Compose 部署)
+# 所有中间件通过 Docker 内部网络互联
+# =============================================
+
+spring:
+
+  datasource:
+    url: jdbc:postgresql://postgres:5432/ragent?client_encoding=UTF8
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:postgres}
+
+  data:
+    redis:
+      host: redis
+      port: 6379
+      password: ${REDIS_PASSWORD:123456}
+
+rocketmq:
+  name-server: rocketmq-namesrv:9876
+
+milvus:
+  uri: http://milvus:19530
+
+ai:
+  providers:
+    bailian:
+      api-key: ${BAILIAN_API_KEY:}
+    siliconflow:
+      api-key: ${SILICONFLOW_API_KEY:}
+    ollama:
+      # Docker 内部无法访问宿主机 localhost，使用 host.docker.internal
+      url: http://host.docker.internal:11434
+
+rag:
+  mcp:
+    servers:
+      - name: default
+        url: http://mcp-server:9099
+
+rustfs:
+  url: http://minio:9000
+  access-key-id: ${MINIO_ACCESS_KEY:minioadmin}
+  secret-access-key: ${MINIO_SECRET_KEY:minioadmin}

@@ -1,0 +1,65 @@
+target/
+temp
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+!.idea/dictionaries/
+!.idea/inspectionProfiles/
+!.idea/scopes/
+!.idea/icon.png
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+scripts/logs/
+
+### Frontend ###
+node_modules/
+dist/
+.vite/
+.env.local
+
+# Spring Boot local private secrets
+bootstrap/src/main/resources/application-local.yaml
+
+# JVM crash logs
+hs_err_pid*.log
+replay_pid*.log
+
+# Gemini / Claude
+.claude/
+.gemini/
+
+# Environment secrets (keep .env.example)
+.env
+!.env.example
+
+# Ngrok & Deploy scripts
+scripts/ngrok.exe
+scripts/*.log
+scripts/config.yml
+scripts/deploy-*.ps1.tmp

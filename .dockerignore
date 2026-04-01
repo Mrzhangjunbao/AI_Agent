@@ -1,0 +1,42 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# IDE
+.idea
+.vscode
+*.iml
+*.iws
+*.ipr
+
+# Frontend (built separately)
+frontend/node_modules
+frontend/dist
+frontend/.vite
+
+# Build artifacts
+**/target
+**/*.jar
+
+# Logs
+*.log
+
+# Docker
+docker-compose*.yaml
+.dockerignore
+Dockerfile
+
+# Docs & scripts
+docs/
+assets/
+README.md
+LICENSE
+
+# Gemini / Claude
+.claude/
+.gemini/
+
+# JVM crash logs
+hs_err_pid*.log
+replay_pid*.log

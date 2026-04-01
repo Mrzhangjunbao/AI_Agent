@@ -1,0 +1,41 @@
+name: ragent-app-stack
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: ragent-postgres
+    environment:
+      POSTGRES_DB: ragent
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ragent-pg-data:/var/lib/postgresql/data
+      - ../database/schema_pg.sql:/docker-entrypoint-initdb.d/01-schema_pg.sql:ro
+      - ../database/init_data_pg.sql:/docker-entrypoint-initdb.d/02-init_data_pg.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d ragent"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: ragent-redis
+    command: ["redis-server", "--appendonly", "yes", "--requirepass", "123456"]
+    ports:
+      - "6379:6379"
+    volumes:
+      - ragent-redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "123456", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+volumes:
+  ragent-pg-data:
+  ragent-redis-data:
