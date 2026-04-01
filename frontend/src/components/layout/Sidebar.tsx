@@ -172,7 +172,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
               <Bot className="h-5 w-5 text-white" />
             </div>
             <div style={{ fontFamily: sessionTitleFont }}>
-              <p className="text-base font-semibold text-[#1A1A1A]">星穹智枢Agent</p>
+              <p className="text-base font-semibold text-[#1A1A1A]">企业级 RAG 智能体平台</p>
               <p className="text-xs text-[#999999]">Insight Copilot</p>
             </div>
           </div>
